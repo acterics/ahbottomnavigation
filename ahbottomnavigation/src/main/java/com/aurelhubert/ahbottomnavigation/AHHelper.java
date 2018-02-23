@@ -197,13 +197,22 @@ public class AHHelper {
 	public static void updateDrawableColor(final Context context, final Drawable drawable,
 	                                       final ImageView imageView, @ColorInt int fromColor,
 	                                       @ColorInt int toColor, final boolean forceTint) {
+		updateDrawableColor(context, drawable, imageView, fromColor, toColor, forceTint, true);
+	}
+
+	/**
+	 * Update image view color with animation
+	 */
+	public static void updateDrawableColor(final Context context, final Drawable drawable,
+										   final ImageView imageView, @ColorInt int fromColor,
+										   @ColorInt int toColor, final boolean forceTint, final boolean hasTint) {
 		ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), fromColor, toColor);
 		colorAnimation.setDuration(150);
 		colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 			@Override
 			public void onAnimationUpdate(ValueAnimator animator) {
 				imageView.setImageDrawable(AHHelper.getTintDrawable(drawable,
-						(Integer) animator.getAnimatedValue(), forceTint));
+						(Integer) animator.getAnimatedValue(), forceTint, hasTint));
 				imageView.requestLayout();
 			}
 		});

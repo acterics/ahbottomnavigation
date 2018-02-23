@@ -684,7 +684,7 @@ public class AHBottomNavigation extends FrameLayout {
 				AHHelper.updateTextColor(title, itemInactiveColor, itemActiveColor);
 				AHHelper.updateTextSize(title, inactiveSize, activeSize);
 				AHHelper.updateDrawableColor(context, items.get(itemIndex).getDrawable(context), icon,
-						itemInactiveColor, itemActiveColor, forceTint);
+						itemInactiveColor, itemActiveColor, forceTint, items.get(itemIndex).hasTint());
 
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && colored) {
 
@@ -745,7 +745,7 @@ public class AHBottomNavigation extends FrameLayout {
 				AHHelper.updateTextColor(title, itemActiveColor, itemInactiveColor);
 				AHHelper.updateTextSize(title, activeSize, inactiveSize);
 				AHHelper.updateDrawableColor(context, items.get(currentItem).getDrawable(context), icon,
-						itemActiveColor, itemInactiveColor, forceTint);
+						itemActiveColor, itemInactiveColor, forceTint, items.get(currentItem).hasTint());
 			}
 		}
 
@@ -811,7 +811,7 @@ public class AHBottomNavigation extends FrameLayout {
 
 				AHHelper.updateAlpha(title, 0, 1);
 				AHHelper.updateDrawableColor(context, items.get(itemIndex).getDrawable(context), icon,
-						itemInactiveColor, itemActiveColor, forceTint);
+						itemInactiveColor, itemActiveColor, forceTint, items.get(itemIndex).hasTint());
 
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && colored) {
 					int finalRadius = Math.max(getWidth(), getHeight());
@@ -878,7 +878,7 @@ public class AHBottomNavigation extends FrameLayout {
 
 				AHHelper.updateAlpha(title, 1, 0);
 				AHHelper.updateDrawableColor(context, items.get(currentItem).getDrawable(context), icon,
-						itemActiveColor, itemInactiveColor, forceTint);
+						itemActiveColor, itemInactiveColor, forceTint, items.get(currentItem).hasTint());
 			}
 		}
 
