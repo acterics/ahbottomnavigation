@@ -1,3 +1,6 @@
+[![](https://jitpack.io/v/acterics/ahbottomnavigation.svg)](https://jitpack.io/#acterics/ahbottomnavigation)
+
+
 
 # AHBottomNavigation
 Library to implement the Bottom Navigation component from Material Design guidelines (minSdkVersion=14).
