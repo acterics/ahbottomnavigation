@@ -24,6 +24,7 @@ import android.widget.TextView;
  */
 public class AHHelper {
 
+
 	/**
 	 * Return a tint drawable
 	 *
@@ -32,16 +33,38 @@ public class AHHelper {
 	 * @param forceTint
 	 * @return
 	 */
-	public static Drawable getTintDrawable(Drawable drawable, @ColorInt int color, boolean forceTint) {
-		if (forceTint) {
-			drawable.clearColorFilter();
-			drawable.setColorFilter(color, PorterDuff.Mode.SRC_IN);
-			drawable.invalidateSelf();
+	public static Drawable getTintDrawable(Drawable drawable,
+										   @ColorInt int color,
+										   boolean forceTint) {
+		return getTintDrawable(drawable, color, forceTint, true);
+	}
+
+	/**
+	 * Return a tint drawable
+	 *
+	 * @param drawable
+	 * @param color
+	 * @param forceTint
+	 * @param hasTint if drawable base tint
+	 * @return
+	 */
+	public static Drawable getTintDrawable(Drawable drawable,
+										   @ColorInt int color,
+										   boolean forceTint,
+										   boolean hasTint) {
+		if (hasTint) {
+			if (forceTint) {
+				drawable.clearColorFilter();
+				drawable.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+				drawable.invalidateSelf();
+				return drawable;
+			}
+			Drawable wrapDrawable = DrawableCompat.wrap(drawable).mutate();
+			DrawableCompat.setTint(wrapDrawable, color);
+			return wrapDrawable;
+		} else {
 			return drawable;
 		}
-		Drawable wrapDrawable = DrawableCompat.wrap(drawable).mutate();
-		DrawableCompat.setTint(wrapDrawable, color);
-		return wrapDrawable;
 	}
 
 	/**

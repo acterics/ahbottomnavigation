@@ -20,6 +20,7 @@ public class AHBottomNavigationItem {
 	private String title = "";
 	private Drawable drawable;
 	private int color = Color.GRAY;
+	private boolean hasTint = true;
 	
 	private
 	@StringRes
@@ -30,6 +31,7 @@ public class AHBottomNavigationItem {
 	private
 	@ColorRes
 	int colorRes = 0;
+
 	
 	/**
 	 * Constructor
@@ -90,6 +92,22 @@ public class AHBottomNavigationItem {
 		this.drawable = drawable;
 		this.color = color;
 	}
+
+
+	/**
+	 * Constructor
+	 *
+	 * @param titleRes    String resource
+	 * @param drawableRes Drawable resource
+	 * @param hasTint If the icon has tint
+	 */
+	public AHBottomNavigationItem(@StringRes int titleRes,
+								  @DrawableRes int drawableRes,
+								  boolean hasTint) {
+		this.titleRes = titleRes;
+		this.drawableRes = drawableRes;
+		this.hasTint = hasTint;
+	}
 	
 	public String getTitle(Context context) {
 		if (titleRes != 0) {
@@ -144,5 +162,13 @@ public class AHBottomNavigationItem {
 	public void setDrawable(Drawable drawable) {
 		this.drawable = drawable;
 		this.drawableRes = 0;
+	}
+
+	public boolean hasTint() {
+		return hasTint;
+	}
+
+	public void setHasTint(boolean hasTint) {
+		this.hasTint = hasTint;
 	}
 }
